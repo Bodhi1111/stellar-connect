@@ -1,0 +1,58 @@
+# Markdownlint configuration for Stellar Connect
+# Disable overly strict formatting rules while keeping quality checks
+
+# Disable strict spacing requirements
+MD022: false  # blanks-around-headings
+MD032: false  # blanks-around-lists  
+MD031: false  # blanks-around-fences
+
+# Disable punctuation restrictions
+MD026: false  # no-trailing-punctuation in headings
+
+# Disable URL formatting requirements  
+MD034: false  # no-bare-urls
+
+# Disable code block language requirements
+MD040: false  # fenced-code-language
+
+# Disable whitespace restrictions
+MD009: false  # no-trailing-spaces
+MD012: false  # no-multiple-blanks
+MD047: false  # single-trailing-newline
+
+# Keep important rules enabled (not listed = enabled by default)
+# MD001: heading-increment (proper heading hierarchy)
+# MD003: heading-style (consistent heading style)
+# MD004: ul-style (consistent unordered list style)
+# MD005: list-indent (proper list indentation)
+# MD007: ul-indent (unordered list indentation)
+# MD010: no-hard-tabs (no hard tabs)
+# MD011: no-reversed-links (no reversed link syntax)
+# MD013: line-length (reasonable line length)
+# MD014: no-shell-dollars (no dollar signs in shell code)
+# MD018: no-missing-space-atx (space after # in headings)
+# MD019: no-multiple-space-atx (single space after # in headings)
+# MD020: no-missing-space-closed-atx (space before closing # in headings)
+# MD021: no-multiple-space-closed-atx (single space before closing # in headings)
+# MD023: heading-start-left (headings start at beginning of line)
+# MD024: no-duplicate-heading (no duplicate headings)
+# MD025: single-title (single top level heading)
+# MD027: no-multiple-space-blockquote (no multiple spaces in blockquotes)
+# MD028: no-blanks-blockquote (no blank lines in blockquotes)
+# MD029: ol-prefix (ordered list item prefix)
+# MD030: list-marker-space (spaces after list markers)
+# MD033: no-inline-html (no inline HTML)
+# MD035: hr-style (horizontal rule style)
+# MD036: no-emphasis-as-heading (no emphasis used as heading)
+# MD037: no-space-in-emphasis (no spaces in emphasis)
+# MD038: no-space-in-code (no spaces in code spans)
+# MD039: no-space-in-links (no spaces in links)
+# MD041: first-line-heading (first line in file should be top level heading)
+# MD042: no-empty-links (no empty links)
+# MD043: required-headings (required headings)
+# MD044: proper-names (proper names should have correct capitalization)
+# MD045: no-alt-text (images should have alternate text)
+# MD046: code-block-style (code block style)
+# MD048: code-fence-style (code fence style)
+# MD049: emphasis-style (emphasis style)
+# MD050: strong-style (strong style)
