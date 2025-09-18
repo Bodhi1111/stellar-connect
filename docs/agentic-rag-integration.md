@@ -2,7 +2,7 @@
 
 ## Overview
 
-Integration of advanced agentic RAG patterns from [FareedKhan-dev's repository](https://github.com/FareedKhan-dev/agentic-rag) to enhance Stellar Connect's reasoning capabilities beyond standard RAG into human-like analytical thinking.
+Integration of advanced agentic RAG patterns from [FareedKhan-dev's repository](https://github.com/FareedKhan-dev/agentic-rag) to enhance Stellar Connect's sales intelligence and revenue operations capabilities beyond standard RAG into human-like sales strategic thinking.
 
 ## Key Enhancements from Agentic RAG
 

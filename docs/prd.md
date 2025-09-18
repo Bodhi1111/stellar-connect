@@ -12,7 +12,7 @@
 • Establish foundation for scaling from 2 to 7+ specialized CrewAI agents as value is proven
 
 ### Background Context
-Stellar Connect addresses the critical inefficiency in trust and estate planning sales operations where advisors spend 40% of their time on administrative tasks instead of selling. With 700+ unprocessed transcripts containing valuable sales intelligence and 3,900+ Notion records that cannot be effectively queried, the current workflow creates a compound opportunity cost - missing revenue-generating patterns, viral content opportunities, and delayed client engagement. The platform leverages local LLMs (Mistral-7B with MLX optimization), PostgreSQL for structured data, and CrewAI agent orchestration to create a privacy-first intelligence system that runs entirely on the M2 Max MacBook, ensuring complete data security for sensitive estate planning information.
+Stellar Connect addresses the critical inefficiency in sales operations where revenue teams spend 40% of their time on administrative tasks instead of selling and strategic planning. With 700+ unprocessed sales call transcripts containing valuable revenue intelligence and 3,900+ Notion records that cannot be effectively queried, the current workflow creates a compound opportunity cost - missing revenue-generating patterns, competitive insights, and delayed deal progression. The platform leverages local LLMs (Mistral-7B with MLX optimization), PostgreSQL for structured data, and CrewAI agent orchestration to create a privacy-first sales intelligence system that runs entirely on the M2 Max MacBook, ensuring complete data security for sensitive sales and customer information while providing CRO-level strategic insights.
 
 ### Change Log
 | Date | Version | Description | Author |
@@ -123,7 +123,7 @@ Single repository containing all services, agents, database schemas, and UI comp
 
 **Epic 4: Sales Operations Enhancement** - Add disposition tracking, manual editing capabilities, deal closure details, and social content extraction to complete the sales workflow
 
-**Epic 5: Agentic RAG Reasoning Engine** - Implement advanced agentic RAG patterns with specialist agents, cognitive self-correction, and adversarial testing for human-like analytical reasoning
+**Epic 5: Sales Strategy Agentic RAG Engine** - Implement advanced agentic RAG patterns with sales specialist agents (Revenue Operations, Performance Analyst, Competitive Intelligence, Sales Enablement), cognitive self-correction, and adversarial testing for CRO-level strategic reasoning
 
 **Epic 6: Advanced Analytics & Scaling** - Implement pattern analysis, prospect scoring, and expand CrewAI agents to provide strategic sales intelligence
 
@@ -465,51 +465,52 @@ so that I never miss follow-up opportunities.
 6. Workflow triggers based on prospect behavior and data changes
 7. Integration with existing productivity tools and calendar systems
 
-## Epic 5: Agentic RAG Reasoning Engine
+## Epic 5: Sales Strategy Agentic RAG Engine
 
-**Goal:** Transform Stellar Connect from a standard RAG system into an advanced reasoning engine that mimics human analytical thinking through specialist agents, multi-step planning, cognitive self-correction, and adversarial testing. This epic implements the sophisticated agentic RAG patterns that enable human-like reasoning, quality control, and robust responses to complex trust/estate planning scenarios.
+**Goal:** Transform Stellar Connect from a standard RAG system into an advanced sales intelligence reasoning engine that mimics CRO-level strategic thinking through specialist sales agents, multi-step analysis planning, cognitive self-correction, and adversarial testing. This epic implements sophisticated agentic RAG patterns that enable human-like reasoning, quality control, and robust responses to complex sales strategy and revenue operations scenarios.
 
-### Story 5.1: Enhanced Knowledge Base with Multi-Layered Understanding
-As a system architect,
-I want to implement structure-aware document processing with multi-layered understanding,
-so that the system can extract deeper insights beyond simple text retrieval.
-
-**Acceptance Criteria:**
-1. Structure-aware transcript parsing that identifies estate planning sections (client intro, estate details, properties, family, objections, rebuttals)
-2. Multi-layered knowledge base with raw text, structured elements, semantic embeddings, success patterns, and predictive insights
-3. Domain-specific metadata generation including estate complexity scores, objection categorization, and close probability predictions
-4. Enhanced chunking strategy that preserves estate planning context and relationships
-5. Automated summary and keyword generation for each transcript layer using Mistral-7B
-6. Integration with existing PostgreSQL and Qdrant infrastructure
-7. Performance optimization maintaining <15GB memory usage during enhanced processing
-
-### Story 5.2: Specialist Agent Team Implementation
-As a sales intelligence user,
-I want specialized agents with domain expertise,
-so that I can get expert-level analysis from different perspectives.
+### Story 5.1: Enhanced Sales Knowledge Base with Multi-Layered Understanding
+As a CRO and sales strategist,
+I want to implement structure-aware sales conversation processing with multi-layered understanding,
+so that the system can extract deeper revenue insights beyond simple text retrieval.
 
 **Acceptance Criteria:**
-1. Estate Librarian Agent that specializes in document retrieval, similar case finding, and successful rebuttal identification
-2. Trust Sales Analyst Agent focused on conversion pattern analysis, risk assessment, and approach recommendations
-3. Market Scout Agent for real-time market intelligence, estate tax updates, and competitive analysis
-4. Agent communication protocols enabling seamless collaboration and task delegation
-5. Specialized tools and knowledge bases for each agent type
-6. Performance monitoring and load balancing across specialist agents
-7. Integration with existing CrewAI framework while maintaining backward compatibility
+1. Structure-aware transcript parsing that identifies sales methodology sections (discovery, needs analysis, solution presentation, objection handling, closing attempts, next steps)
+2. Multi-layered sales knowledge base with raw conversations, structured sales elements, semantic embeddings, win/loss patterns, and predictive revenue insights
+3. Sales-specific metadata generation including deal size indicators, sales stage classification, objection categorization, and closing probability predictions
+4. Enhanced chunking strategy that preserves sales conversation context and methodology relationships
+5. Automated summary and keyword generation for each sales conversation layer using Mistral-7B
+6. Integration with existing PostgreSQL and Qdrant infrastructure for sales intelligence
+7. Performance optimization maintaining <15GB memory usage during enhanced sales processing
 
-### Story 5.3: Gatekeeper and Query Validation System
-As a system user,
-I want intelligent query validation and clarification,
-so that I receive precise answers rather than vague or incomplete responses.
+### Story 5.2: Sales Specialist Agent Team Implementation
+As a CRO and revenue operations leader,
+I want specialized sales agents with domain expertise,
+so that I can get expert-level analysis from different revenue perspectives.
 
 **Acceptance Criteria:**
-1. Gatekeeper node that validates queries for clarity, specificity, and actionability in trust/estate context
-2. Ambiguity detection for estate value ranges, geographic specificity, family structure details, and timeline requirements
-3. Intelligent clarifying question generation when queries are unclear or incomplete
-4. Query routing to appropriate specialist agents based on query type and complexity
-5. Context preservation for follow-up questions and query refinement
-6. User-friendly clarification interface integrated with Gradio chat
-7. Performance optimization ensuring validation completes in <2 seconds
+1. Revenue Operations Agent that specializes in pipeline analysis, forecasting, and sales process optimization
+2. Sales Performance Analyst Agent focused on rep performance analysis, coaching opportunities, and territory optimization
+3. Competitive Intelligence Agent for real-time competitive analysis, win/loss patterns, and positioning strategies
+4. Sales Enablement Agent for content effectiveness analysis, training needs identification, and methodology optimization
+5. Agent communication protocols enabling seamless collaboration and task delegation across sales functions
+6. Specialized tools and knowledge bases for each sales agent type
+7. Performance monitoring and load balancing across specialist sales agents
+8. Integration with existing CrewAI framework while maintaining backward compatibility
+
+### Story 5.3: Sales Gatekeeper and Query Validation System
+As a sales leader and CRO,
+I want intelligent sales query validation and clarification,
+so that I receive precise revenue insights rather than vague or incomplete responses.
+
+**Acceptance Criteria:**
+1. Sales Gatekeeper node that validates queries for clarity, specificity, and actionability in sales/revenue context
+2. Ambiguity detection for time periods, sales metrics, market segments, and competitive context requirements
+3. Intelligent clarifying question generation when sales queries are unclear or incomplete
+4. Query routing to appropriate sales specialist agents based on revenue analysis type and complexity
+5. Context preservation for follow-up questions and sales query refinement
+6. User-friendly clarification interface integrated with Gradio chat for sales workflows
+7. Performance optimization ensuring sales validation completes in <2 seconds
 
 ### Story 5.4: Multi-Step Planning and Execution Engine
 As an analytical user,
