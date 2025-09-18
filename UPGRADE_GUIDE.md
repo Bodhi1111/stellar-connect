@@ -1,6 +1,7 @@
 # BMad Method Upgrade Guide
 
 ## Current Installation
+
 - **Version**: 4.43.1
 - **Status**: ✅ Latest Version
 - **Install Date**: September 17, 2025
@@ -9,33 +10,39 @@
 ## How to Check for Updates
 
 ### 1. Check Current Version
+
 ```bash
 npx bmad-method --version
 ```
 
 ### 2. Check Latest Available Version
+
 ```bash
 npm view bmad-method version
 ```
 
 ### 3. Compare Versions
+
 If the npm version is higher than your current version, an upgrade is available.
 
 ## Upgrade Methods
 
 ### Method 1: Smart Upgrade (Recommended)
+
 ```bash
 # This preserves your existing configuration
 npx bmad-method@latest install --upgrade
 ```
 
 ### Method 2: Full Reinstall
+
 ```bash
 # This will detect and upgrade your existing installation
 npx bmad-method@latest install --full --directory . --ide cursor
 ```
 
 ### Method 3: Interactive Upgrade
+
 ```bash
 # Run without flags for interactive prompts
 npx bmad-method@latest install
@@ -44,11 +51,13 @@ npx bmad-method@latest install
 ## What Gets Upgraded
 
 ✅ **Preserved During Upgrade:**
+
 - Your project files and custom code
 - Git history and commits
 - Custom configurations you've made
 
 🔄 **Updated During Upgrade:**
+
 - BMad agent definitions (.bmad-core/agents/)
 - Framework templates (.bmad-core/templates/)
 - Workflow definitions (.bmad-core/workflows/)
@@ -58,11 +67,13 @@ npx bmad-method@latest install
 ## Post-Upgrade Verification
 
 1. **Check Version**:
+
    ```bash
    npx bmad-method --version
    ```
 
 2. **Verify Installation**:
+
    ```bash
    cat .bmad-core/install-manifest.yaml | head -5
    ```
