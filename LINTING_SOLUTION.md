@@ -4,9 +4,12 @@
 
 The markdown linting errors were caused by:
 
-1. **BMad Method QA Focus**: The BMad framework includes quality assurance agents and configurations that enable strict linting rules
-2. **Cursor IDE Integration**: The BMad installation configured Cursor with enhanced linting rules
-3. **New Project Setup**: Unlike your previous projects, this one had strict markdown formatting rules enabled
+1. **BMad Method QA Focus**: The BMad framework includes quality assurance agents and 
+   configurations that enable strict linting rules
+2. **Cursor IDE Integration**: The BMad installation configured Cursor with enhanced 
+   linting rules
+3. **New Project Setup**: Unlike your previous projects, this one had strict markdown 
+   formatting rules enabled
 
 ## Solution Applied
 

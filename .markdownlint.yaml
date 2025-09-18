@@ -19,6 +19,7 @@ MD040: false  # fenced-code-language
 MD009: false  # no-trailing-spaces
 MD012: false  # no-multiple-blanks
 MD047: false  # single-trailing-newline
+MD013: false  # line-length (allow long lines for documentation)
 
 # Keep important rules enabled (not listed = enabled by default)
 # MD001: heading-increment (proper heading hierarchy)
