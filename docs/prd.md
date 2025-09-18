@@ -94,7 +94,7 @@ Optimized for macOS desktop browsers (Safari, Chrome) on high-resolution display
 Single repository containing all services, agents, database schemas, and UI components. This simplifies dependency management, enables atomic commits across the stack, and aligns with single-developer maintenance. Structure will follow: `/agents`, `/api`, `/ui`, `/database`, `/models`, `/utils`.
 
 ### Service Architecture
-**Modular Monolith with Agent Orchestration:** Core Python application with CrewAI agent framework, running as separate processes that communicate via PostgreSQL and message queues. Services include: transcript watcher (filesystem monitor), processing pipeline (CrewAI orchestrator), database service (PostgreSQL interface), RAG service (Qdrant + MLX), and web interface (Gradio). Each service can run independently for testing but orchestrated together in production.
+**Enhanced Agentic RAG with Reasoning Engine:** Core Python application with CrewAI agent framework enhanced with advanced agentic RAG patterns for human-like reasoning. Architecture includes: transcript watcher (filesystem monitor), enhanced processing pipeline with specialist agents (Estate Librarian, Trust Sales Analyst, Market Scout), reasoning engine with cognitive self-correction (Gatekeeper, Planner, Auditor, Strategist), database service (PostgreSQL interface), enhanced RAG service (Qdrant + MLX with multi-layered understanding), and web interface (Gradio). Each service can run independently for testing but orchestrated together in production with advanced quality control and adversarial testing.
 
 ### Testing Requirements
 **Unit + Integration Focus:** Unit tests for all data extraction and transformation logic, integration tests for agent communication and database operations, end-to-end tests for critical paths (transcript processing, email generation). Manual testing convenience methods for LLM prompt validation and email template preview. No extensive UI testing in MVP given Gradio's built-in components.
@@ -102,7 +102,7 @@ Single repository containing all services, agents, database schemas, and UI comp
 ### Additional Technical Assumptions and Requests
 • **Language & Framework:** Python 3.11+ for all backend services, leveraging async/await for concurrent operations
 • **LLM Infrastructure:** Mistral-7B-Instruct via MLX framework for Apple Silicon optimization, with 4-bit quantization for memory efficiency
-• **Agent Framework:** CrewAI 0.1.x for agent orchestration, starting with 2 agents, architected to scale to 7+
+• **Agent Framework:** CrewAI 0.1.x enhanced with agentic RAG patterns, starting with 2 agents, architected to scale to 7+ specialist agents (Estate Librarian, Trust Sales Analyst, Market Scout, Gatekeeper, Planner, Auditor, Strategist) with cognitive self-correction and adversarial testing
 • **Database Stack:** PostgreSQL 15+ as primary datastore, Qdrant for vector embeddings, SQLite for agent state persistence
 • **Frontend:** Gradio 4.x for chat interface and basic UI, with custom CSS for professional styling
 • **File Monitoring:** Python watchdog library for Google Drive folder monitoring with debouncing for file sync delays
@@ -123,7 +123,9 @@ Single repository containing all services, agents, database schemas, and UI comp
 
 **Epic 4: Sales Operations Enhancement** - Add disposition tracking, manual editing capabilities, deal closure details, and social content extraction to complete the sales workflow
 
-**Epic 5: Advanced Analytics & Scaling** - Implement pattern analysis, prospect scoring, and expand CrewAI agents to provide strategic sales intelligence
+**Epic 5: Agentic RAG Reasoning Engine** - Implement advanced agentic RAG patterns with specialist agents, cognitive self-correction, and adversarial testing for human-like analytical reasoning
+
+**Epic 6: Advanced Analytics & Scaling** - Implement pattern analysis, prospect scoring, and expand CrewAI agents to provide strategic sales intelligence
 
 ## Epic 1: Foundation & Data Migration
 
@@ -463,7 +465,109 @@ so that I never miss follow-up opportunities.
 6. Workflow triggers based on prospect behavior and data changes
 7. Integration with existing productivity tools and calendar systems
 
-## Epic 5: Advanced Analytics & Scaling
+## Epic 5: Agentic RAG Reasoning Engine
+
+**Goal:** Transform Stellar Connect from a standard RAG system into an advanced reasoning engine that mimics human analytical thinking through specialist agents, multi-step planning, cognitive self-correction, and adversarial testing. This epic implements the sophisticated agentic RAG patterns that enable human-like reasoning, quality control, and robust responses to complex trust/estate planning scenarios.
+
+### Story 5.1: Enhanced Knowledge Base with Multi-Layered Understanding
+As a system architect,
+I want to implement structure-aware document processing with multi-layered understanding,
+so that the system can extract deeper insights beyond simple text retrieval.
+
+**Acceptance Criteria:**
+1. Structure-aware transcript parsing that identifies estate planning sections (client intro, estate details, properties, family, objections, rebuttals)
+2. Multi-layered knowledge base with raw text, structured elements, semantic embeddings, success patterns, and predictive insights
+3. Domain-specific metadata generation including estate complexity scores, objection categorization, and close probability predictions
+4. Enhanced chunking strategy that preserves estate planning context and relationships
+5. Automated summary and keyword generation for each transcript layer using Mistral-7B
+6. Integration with existing PostgreSQL and Qdrant infrastructure
+7. Performance optimization maintaining <15GB memory usage during enhanced processing
+
+### Story 5.2: Specialist Agent Team Implementation
+As a sales intelligence user,
+I want specialized agents with domain expertise,
+so that I can get expert-level analysis from different perspectives.
+
+**Acceptance Criteria:**
+1. Estate Librarian Agent that specializes in document retrieval, similar case finding, and successful rebuttal identification
+2. Trust Sales Analyst Agent focused on conversion pattern analysis, risk assessment, and approach recommendations
+3. Market Scout Agent for real-time market intelligence, estate tax updates, and competitive analysis
+4. Agent communication protocols enabling seamless collaboration and task delegation
+5. Specialized tools and knowledge bases for each agent type
+6. Performance monitoring and load balancing across specialist agents
+7. Integration with existing CrewAI framework while maintaining backward compatibility
+
+### Story 5.3: Gatekeeper and Query Validation System
+As a system user,
+I want intelligent query validation and clarification,
+so that I receive precise answers rather than vague or incomplete responses.
+
+**Acceptance Criteria:**
+1. Gatekeeper node that validates queries for clarity, specificity, and actionability in trust/estate context
+2. Ambiguity detection for estate value ranges, geographic specificity, family structure details, and timeline requirements
+3. Intelligent clarifying question generation when queries are unclear or incomplete
+4. Query routing to appropriate specialist agents based on query type and complexity
+5. Context preservation for follow-up questions and query refinement
+6. User-friendly clarification interface integrated with Gradio chat
+7. Performance optimization ensuring validation completes in <2 seconds
+
+### Story 5.4: Multi-Step Planning and Execution Engine
+As an analytical user,
+I want systematic multi-step analysis planning,
+so that complex queries are handled methodically rather than rushed.
+
+**Acceptance Criteria:**
+1. Estate Planner node that creates structured analysis plans for complex queries
+2. Plan generation for different analysis types: prospect analysis, pattern analysis, competitive analysis
+3. Dynamic plan adjustment based on intermediate results and discovered complexity
+4. Task delegation to appropriate specialist agents with clear success criteria
+5. Progress tracking and status updates during multi-step analysis execution
+6. Error handling and plan revision when steps fail or produce insufficient results
+7. Estimated completion times and resource requirements for analysis plans
+
+### Story 5.5: Cognitive Self-Correction and Quality Assurance
+As a professional user,
+I want automatic quality control and error correction,
+so that I can trust the system's analysis and recommendations.
+
+**Acceptance Criteria:**
+1. Estate Auditor node that performs comprehensive quality checks on analysis results
+2. Data consistency verification, regulatory compliance checking, and estate calculation validation
+3. Bias detection and assumption identification in analysis results
+4. Recommendation appropriateness assessment for trust/estate planning context
+5. Automatic correction suggestions and result revision capabilities
+6. Confidence scoring for analysis results with transparency into quality factors
+7. Audit trail logging for all quality checks and corrections applied
+
+### Story 5.6: Strategic Insights and Causal Reasoning
+As a sales strategist,
+I want advanced reasoning that identifies causal relationships and generates hypotheses,
+so that I can understand not just what happened but why it happened.
+
+**Acceptance Criteria:**
+1. Estate Strategist node that synthesizes insights from multiple analysis results
+2. Causal inference identification showing relationships between client characteristics and outcomes
+3. Success pattern correlation analysis revealing non-obvious success factors
+4. Predictive hypothesis generation for prospect behavior and market trends
+5. Strategic recommendation synthesis combining insights from all specialist agents
+6. Pattern visualization and explanation of reasoning chains
+7. Actionable intelligence delivery with specific next steps and success probabilities
+
+### Story 5.7: Adversarial Testing and Red Team Framework
+As a system administrator,
+I want robust testing against manipulation and misinformation,
+so that the system maintains professional standards under pressure.
+
+**Acceptance Criteria:**
+1. Red team testing framework with estate planning-specific attack vectors
+2. Adversarial prompt generation for legal misinformation, emotional manipulation, confidentiality breaches, and regulatory compliance tests
+3. Automated evaluation system using LLM-as-a-judge for response quality assessment
+4. Compliance evaluation for regulatory standards, confidentiality protection, and professional ethics
+5. Vulnerability detection and reporting with specific failure modes identified
+6. Continuous testing integration with automated quality assurance workflows
+7. Performance benchmarking showing robustness improvements over time
+
+## Epic 6: Advanced Analytics & Scaling
 
 **Goal:** Elevate the platform from operational tool to strategic intelligence system by implementing sophisticated pattern analysis, expanding the CrewAI agent framework to 7+ specialized agents, and providing predictive insights that drive systematic sales performance improvements across the entire business.
 
