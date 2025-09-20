@@ -1,0 +1,20 @@
+# Core AI frameworks
+llama-index
+llama-index-llms-ollama
+llama-index-embeddings-ollama
+llama-index-vector-stores-qdrant
+llama-index-graph-stores-neo4j
+crewai
+crewai-tools
+
+# Data processing and utilities
+# Installing [all-docs] ensures support for PDF, DOCX, etc.
+unstructured[all-docs]
+watchdog
+python-dotenv
+qdrant-client
+neo4j
+pydantic
+
+# User Interface
+streamlit
