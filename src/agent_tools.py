@@ -1,6 +1,6 @@
 # src/agent_tools.py
 import qdrant_client
-from crewai_tools import BaseTool
+from crewai.tools import BaseTool
 from llama_index.core import (
     VectorStoreIndex, StorageContext, Settings
 )
@@ -8,7 +8,7 @@ from llama_index.vector_stores.qdrant import QdrantVectorStore
 from llama_index.graph_stores.neo4j import Neo4jGraphStore
 from llama_index.core.query_engine import KnowledgeGraphQueryEngine
 from llama_index.core.program import LLMTextCompletionProgram
-from llama_index.core.bridge.pydantic import PydanticProgramMode
+# from llama_index.core.bridge.pydantic import PydanticProgramMode  # Not available in current version
 from src.config import CONFIG, init_settings
 from src.data_models import SalesRecord
 
@@ -95,7 +95,7 @@ class PydanticExtractionTool(BaseTool):
             output_cls=SalesRecord,
             llm=Settings.llm,
             prompt_template_str=prompt_template_str,
-            pydantic_program_mode=PydanticProgramMode.DEFAULT,
+            # pydantic_program_mode=PydanticProgramMode.DEFAULT,  # Not available in current version
         )
         output = program(context_text=argument)
         return output.json()
