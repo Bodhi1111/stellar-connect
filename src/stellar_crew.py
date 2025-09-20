@@ -18,7 +18,7 @@ retrieval_agent = Agent(
     backstory="You are an expert in hybrid knowledge systems. You know precisely when to use semantic search for nuanced context and when to use graph search for structured facts and relationships.",
     tools=[vector_tool, kg_tool],
     llm=AGENT_LLM,
-    verbose=True,
+    verbose=1,
     allow_delegation=False
 )
 
@@ -29,7 +29,7 @@ data_extraction_agent = Agent(
     backstory="You specialize in transforming conversations into structured data. You meticulously analyze context to identify key metrics, outcomes, and details, formatting them using the provided extraction tool.",
     tools=[extraction_tool],
     llm=AGENT_LLM,
-    verbose=True,
+    verbose=1,
     allow_delegation=False
 )
 
@@ -40,7 +40,7 @@ content_generation_agent = Agent(
     backstory="You are a master communicator. You synthesize information provided by the Retrieval agent into concise, professional, and actionable messages, adopting the appropriate tone for the task.",
     tools=[],
     llm=AGENT_LLM,
-    verbose=True,
+    verbose=1,
     allow_delegation=False
 )
 
