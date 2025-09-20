@@ -15,6 +15,7 @@
 Stellar Connect addresses the critical inefficiency in sales operations where revenue teams spend 40% of their time on administrative tasks instead of selling and strategic planning. With 700+ unprocessed sales call transcripts containing valuable revenue intelligence and 3,900+ Notion records that cannot be effectively queried, the current workflow creates a compound opportunity cost - missing revenue-generating patterns, competitive insights, and delayed deal progression. The platform leverages local LLMs (Mistral-7B with MLX optimization), PostgreSQL for structured data, and CrewAI agent orchestration to create a privacy-first sales intelligence system that runs entirely on the M2 Max MacBook, ensuring complete data security for sensitive sales and customer information while providing CRO-level strategic insights.
 
 ### Change Log
+
 | Date | Version | Description | Author |
 |------|---------|-------------|--------|
 | 2025-01-17 | 1.0 | Initial PRD creation from Project Brief | John (PM) |
