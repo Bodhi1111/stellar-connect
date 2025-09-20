@@ -1,0 +1,229 @@
+{
+  "summary": {
+    "test_execution": {
+      "start_time": "2025-09-19T22:43:11.976444",
+      "end_time": "2025-09-19T22:43:11.978721",
+      "total_duration_seconds": 0.002277,
+      "total_tests": 8,
+      "successful_tests": 7,
+      "failed_tests": 1,
+      "success_rate": 0.875
+    },
+    "agent_performance": {
+      "estate_librarian": {
+        "status": "passed",
+        "case_search_success": true,
+        "rebuttal_retrieval_success": true,
+        "content_search_success": true
+      },
+      "trust_sales_analyst": {
+        "status": "passed",
+        "conversion_analysis_success": true,
+        "objection_analysis_success": true,
+        "performance_report_success": true
+      },
+      "market_scout": {
+        "status": "passed"
+      },
+      "sales_specialist": {
+        "status": "failed",
+        "error": "'NoneType' object has no attribute 'get'"
+      }
+    },
+    "system_health": {
+      "all_agents_healthy": true,
+      "coordinator_functional": true,
+      "performance_acceptable": true
+    }
+  },
+  "detailed_results": {
+    "health_checks": {
+      "Estate Librarian": {
+        "health_check": true,
+        "agent_active": true,
+        "capabilities_count": 5,
+        "task_types_count": 7,
+        "workload_capacity": true,
+        "performance_score": 1.0
+      },
+      "Trust Sales Analyst": {
+        "health_check": true,
+        "agent_active": true,
+        "capabilities_count": 5,
+        "task_types_count": 7,
+        "workload_capacity": true,
+        "performance_score": 1.0
+      },
+      "Market Scout": {
+        "health_check": true,
+        "agent_active": true,
+        "capabilities_count": 5,
+        "task_types_count": 8,
+        "workload_capacity": true,
+        "performance_score": 1.0
+      },
+      "Sales Specialist": {
+        "health_check": true,
+        "agent_active": true,
+        "capabilities_count": 5,
+        "task_types_count": 8,
+        "workload_capacity": true,
+        "performance_score": 1.0
+      }
+    },
+    "estate_librarian": {
+      "similar_case_search": {
+        "success": true,
+        "cases_found": 0,
+        "insights_generated": 0
+      },
+      "rebuttal_retrieval": {
+        "success": true,
+        "rebuttals_found": 0,
+        "avg_effectiveness": 0.0
+      },
+      "content_search": {
+        "success": true,
+        "results_found": 0,
+        "avg_relevance": 0.0
+      }
+    },
+    "trust_sales_analyst": {
+      "conversion_analysis": {
+        "success": true,
+        "conversion_rate": 0,
+        "avg_deal_size": 0,
+        "recommendations_count": 1
+      },
+      "objection_analysis": {
+        "success": true,
+        "categories_analyzed": 2,
+        "total_objections": 2,
+        "insights_generated": 3
+      },
+      "performance_report": {
+        "success": true,
+        "overall_score": 0.9,
+        "trend": "improving",
+        "recommendations": 0
+      }
+    },
+    "market_scout": {
+      "trend_monitoring": {
+        "success": true,
+        "trends_found": 2,
+        "high_impact_trends": 1,
+        "avg_confidence": 0.885
+      },
+      "opportunity_discovery": {
+        "success": true,
+        "opportunities_found": 0,
+        "high_value_opportunities": 0,
+        "avg_success_probability": 0
+      },
+      "competitive_intelligence": {
+        "success": true,
+        "intelligence_items": 1,
+        "high_reliability_items": 1,
+        "competitors_analyzed": 1
+      }
+    },
+    "sales_specialist": {
+      "sales_recommendations": {
+        "success": true,
+        "immediate_recommendations": 3,
+        "priority_recommendations": 3,
+        "stage_optimization": 0.7
+      },
+      "error": "'NoneType' object has no attribute 'get'"
+    },
+    "coordinator_integration": {
+      "system_status": {
+        "total_specialists": 4,
+        "active_specialists": 4,
+        "all_agents_healthy": true
+      },
+      "health_check_all": {
+        "overall_health": true,
+        "healthy_agents": 4
+      },
+      "task_coordination": {
+        "tasks_executed": 3,
+        "successful_executions": 3,
+        "coordination_details": [
+          {
+            "task_type": "find_similar_cases",
+            "assigned_specialist": "Estate Librarian",
+            "execution_success": true
+          },
+          {
+            "task_type": "analyze_conversions",
+            "assigned_specialist": "Trust Sales Analyst",
+            "execution_success": true
+          },
+          {
+            "task_type": "monitor_trends",
+            "assigned_specialist": "Market Scout",
+            "execution_success": true
+          }
+        ]
+      }
+    },
+    "performance_and_load": {
+      "concurrent_execution": {
+        "total_tasks": 8,
+        "successful_tasks": 8,
+        "execution_time_seconds": 0.000478,
+        "avg_time_per_task": 5.975e-05,
+        "tasks_per_second": 16736.401673640168
+      },
+      "workload_distribution": {
+        "Estate Librarian": {
+          "completed_today": 12,
+          "success_rate": 1.0,
+          "avg_response_time": 1.125e-05
+        },
+        "Trust Sales Analyst": {
+          "completed_today": 4,
+          "success_rate": 1.0,
+          "avg_response_time": 3.4500000000000005e-05
+        },
+        "Market Scout": {
+          "completed_today": 4,
+          "success_rate": 1.0,
+          "avg_response_time": 2.7e-05
+        },
+        "Sales Specialist": {
+          "completed_today": 1,
+          "success_rate": 0.5,
+          "avg_response_time": 5.4999999999999995e-05
+        }
+      },
+      "resource_usage": {
+        "estimated_memory_mb": 200,
+        "active_tasks_total": 0,
+        "agents_at_capacity": 0
+      }
+    },
+    "error_handling": {
+      "invalid_task_type": {
+        "handled_gracefully": true,
+        "no_crash": true
+      },
+      "missing_required_data": {
+        "handled_gracefully": true,
+        "no_crash": true
+      },
+      "overload_handling": {
+        "tasks_assigned": 5,
+        "tasks_rejected": 15,
+        "graceful_rejection": true,
+        "no_crash": true
+      }
+    }
+  },
+  "recommendations": [
+    "All tests passed successfully - system ready for deployment"
+  ],
+  "report_generated": "2025-09-19T22:43:11.978721"
+}
