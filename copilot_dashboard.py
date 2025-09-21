@@ -229,14 +229,32 @@ if 'processing_query' not in st.session_state:
 df = load_all_sales_data()
 
 # Show data loading status in sidebar
-if hasattr(st.session_state, 'data_debug'):
-    with st.sidebar:
+with st.sidebar:
+    st.markdown("### 🛠️ Debug Controls")
+
+    # Add debug mode toggle
+    debug_mode = st.checkbox("Enable Debug Mode", value=True,
+                             help="Shows detailed logging in terminal")
+
+    if debug_mode:
+        st.info("Debug mode ON - Check terminal for logs")
+
+    st.markdown("---")
+
+    if hasattr(st.session_state, 'data_debug'):
         st.markdown("### 📊 Data Status")
         for info in st.session_state.data_debug:
             st.markdown(f"- {info}")
-        if st.button("🔄 Force Refresh Data"):
-            st.cache_data.clear()
-            st.rerun()
+
+    if st.button("🔄 Force Refresh Data"):
+        st.cache_data.clear()
+        st.rerun()
+
+    if st.button("🗑️ Clear All Caches"):
+        st.cache_data.clear()
+        st.session_state.clear()
+        st.success("All caches cleared!")
+        st.rerun()
 
 # 1. STELLAR CONNECT SALES COPILOT HEADER
 st.markdown(f"""
@@ -267,6 +285,12 @@ if user_query and not st.session_state.processing_query:
 
     with st.spinner("🤖 Copilot analyzing your data..."):
         try:
+            # Add comprehensive debugging
+            print(f"\n[DEBUG] ========== CHAT HANDLER START ==========")
+            print(f"[DEBUG] User Query: '{user_query}'")
+            print(f"[DEBUG] Query Type: {type(user_query)}")
+            print(f"[DEBUG] Query Length: {len(user_query)} characters")
+
             # Add user message to chat
             st.session_state.chat_history.append({
                 "role": "user",
@@ -274,9 +298,36 @@ if user_query and not st.session_state.processing_query:
                 "timestamp": datetime.now().strftime("%H:%M:%S")
             })
 
-            # Get AI response
+            # Create tasks with debugging
+            print(f"[DEBUG] Creating tasks...")
             tasks = create_general_query_tasks(user_query)
+            print(f"[DEBUG] Tasks created: {tasks}")
+            print(f"[DEBUG] Tasks type: {type(tasks)}")
+
+            # Get AI response with debugging
+            print(f"[DEBUG] Calling run_crew with tasks...")
             ai_response = run_crew(tasks)
+
+            # Debug the response
+            print(f"[DEBUG] Raw AI Response: {ai_response}")
+            print(f"[DEBUG] Response Type: {type(ai_response)}")
+            print(f"[DEBUG] Response Length: {len(str(ai_response))} characters")
+
+            # Ensure response is a string
+            if ai_response is None:
+                print(f"[DEBUG] WARNING: AI response is None!")
+                ai_response = "No response generated. Please check the backend logs."
+            elif not isinstance(ai_response, str):
+                print(f"[DEBUG] Converting response from {type(ai_response)} to string")
+                ai_response = str(ai_response)
+
+            # Check if response is empty
+            if not ai_response or ai_response.strip() == "":
+                print(f"[DEBUG] WARNING: AI response is empty!")
+                ai_response = "The copilot returned an empty response. Please check the backend configuration."
+
+            print(f"[DEBUG] Final AI Response (first 200 chars): {ai_response[:200]}")
+            print(f"[DEBUG] ========== CHAT HANDLER END ==========\n")
 
             # Add AI response to chat
             st.session_state.chat_history.append({
@@ -285,12 +336,37 @@ if user_query and not st.session_state.processing_query:
                 "timestamp": datetime.now().strftime("%H:%M:%S")
             })
 
+            # Also display in terminal for immediate visibility
+            st.success(f"✅ Response generated successfully ({len(ai_response)} characters)")
+
         except Exception as e:
+            import traceback
+            error_trace = traceback.format_exc()
+
+            print(f"\n[DEBUG] ========== ERROR IN CHAT HANDLER ==========")
+            print(f"[DEBUG] Error Type: {type(e).__name__}")
+            print(f"[DEBUG] Error Message: {str(e)}")
+            print(f"[DEBUG] Full Traceback:")
+            print(error_trace)
+            print(f"[DEBUG] ========== END ERROR ==========\n")
+
+            # Show detailed error in chat
+            error_message = f"""
+🔴 **Error Details:**
+- Error Type: {type(e).__name__}
+- Message: {str(e)}
+- Please check the terminal for full traceback
+- Try rephrasing your question or checking the backend configuration
+            """
+
             st.session_state.chat_history.append({
                 "role": "assistant",
-                "content": f"I encountered an error: {str(e)}. Please try rephrasing your question.",
+                "content": error_message.strip(),
                 "timestamp": datetime.now().strftime("%H:%M:%S")
             })
+
+            # Also show error in UI
+            st.error(f"Error: {type(e).__name__} - {str(e)}")
 
     st.session_state.processing_query = False
     st.rerun()

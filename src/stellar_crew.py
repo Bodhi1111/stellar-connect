@@ -1,13 +1,17 @@
 # src/stellar_crew.py
 from crewai import Agent, Task, Crew, Process
 from llama_index.core import Settings
-from src.config import init_settings
+from src.config import init_settings, CONFIG
 from src.agent_tools import vector_tool, kg_tool, extraction_tool
 
 # Ensure settings are initialized
 init_settings()
-# Use the globally configured LLM for the agents
-AGENT_LLM = Settings.llm
+
+# CrewAI uses LiteLLM format, not LlamaIndex format
+# For Ollama models, we need to prefix with "ollama/"
+# This converts "mistral:7b" to "ollama/mistral:7b" which CrewAI/LiteLLM expects
+AGENT_LLM = f"ollama/{CONFIG.GENERATIVE_MODEL}"
+print(f"[DEBUG] AGENT_LLM configured as: {AGENT_LLM}")
 
 # --- Define Agents (Section 3.2) ---
 
@@ -104,7 +108,7 @@ def run_crew(tasks: list):
         agents=[retrieval_agent, data_extraction_agent, content_generation_agent],
         tasks=tasks,
         process=Process.sequential, # Tasks must be executed in order
-        verbose=2, # Log agent thought processes
+        verbose=True, # Log agent thought processes (changed from 2 to True - boolean required)
     )
 
     result = crew.kickoff()

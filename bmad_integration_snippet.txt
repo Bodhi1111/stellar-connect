@@ -1,0 +1,58 @@
+
+# ============ BMAD INTEGRATION START ============
+# Add this section to your copilot_dashboard.py after imports
+
+# Import BMAD components
+try:
+    from bmad_final_integration import BMADDashboardIntegration
+    BMAD_AVAILABLE = True
+    bmad_integration = BMADDashboardIntegration()
+except ImportError:
+    BMAD_AVAILABLE = False
+    bmad_integration = None
+    print("[WARNING] BMAD integration not available")
+
+# Add to your query processing section:
+def process_query_with_bmad(user_query, mode="standard"):
+    """Process query with optional BMAD enhancement"""
+
+    if mode.startswith("bmad_") and BMAD_AVAILABLE:
+        # Use BMAD processing
+        bmad_mode_map = {
+            "bmad_sales": "sales_optimization",
+            "bmad_implementation": "system_implementation"
+        }
+
+        bmad_workflow = bmad_mode_map.get(mode, "sales_optimization")
+
+        try:
+            return bmad_integration.process_bmad_query(user_query, bmad_workflow)
+        except Exception as e:
+            print(f"[ERROR] BMAD processing failed: {e}")
+            # Fallback to standard
+
+    # Standard processing
+    tasks = create_general_query_tasks(user_query)
+    return run_crew(tasks)
+
+# Add to your Streamlit sidebar:
+if BMAD_AVAILABLE:
+    st.sidebar.markdown("### 🚀 BMAD Controls")
+
+    processing_mode = st.sidebar.selectbox(
+        "Processing Mode",
+        ["standard", "bmad_sales", "bmad_implementation"],
+        format_func=lambda x: {
+            "standard": "Standard CrewAI",
+            "bmad_sales": "BMAD Sales Optimization",
+            "bmad_implementation": "BMAD Implementation"
+        }.get(x, x)
+    )
+
+    # Display BMAD metrics
+    if bmad_integration:
+        metrics = bmad_integration.get_dashboard_metrics()
+        st.sidebar.metric("BMAD Agents", len(metrics.get("agent_types", [])))
+        st.sidebar.metric("Workflows", len(metrics.get("available_workflows", [])))
+
+# ============ BMAD INTEGRATION END ============
